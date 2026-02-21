@@ -1,117 +1,90 @@
-🩺 RuralCare – Web-Based Telemedicine Platform
-📌 Overview
+# 🩺 RuralCare  
+### Web-Based Telemedicine Platform for Rural Healthcare
 
-RuralCare is a web-based telemedicine platform designed to provide accessible and affordable healthcare services to people living in rural areas. The platform enables patients to consult doctors remotely through chat-based consultations and receive digital prescriptions, reducing the need for long-distance travel.
+![Status](https://img.shields.io/badge/Status-Under%20Development-blue)
+![Tech](https://img.shields.io/badge/Tech-MERN-green)
+![License](https://img.shields.io/badge/License-MIT-orange)
 
-❓ Problem Statement
+---
 
+## 📌 Overview
+**RuralCare** is a web-based telemedicine platform designed to provide **accessible and affordable healthcare** services to people living in rural areas.  
+It enables patients to consult doctors remotely through **chat-based consultations** and receive **digital prescriptions**, reducing the need for long-distance travel.
+
+---
+
+## ❗ Problem Statement
 In many rural areas:
+- ❌ Limited access to qualified doctors  
+- ❌ Long-distance travel for basic consultations  
+- ❌ Delayed medical treatment  
 
-Access to qualified doctors is limited
+---
 
-Patients travel long distances for basic consultations
+## 💡 Solution
+RuralCare addresses these challenges by providing:
+- ✔️ Remote doctor consultations  
+- ✔️ Online appointment booking  
+- ✔️ Digital prescription management  
+- ✔️ Secure medical history storage  
 
-Medical treatment is often delayed
+---
 
-RuralCare addresses these challenges by offering a simple and reliable telemedicine solution accessible through the web.
+## 👥 User Roles
+- **Patient**
+- **Doctor**
+- **Admin**
 
-💡 Solution
+---
 
-RuralCare allows patients to:
+## ✨ Features
 
-Book appointments with doctors
+### 👤 Patient
+- Register & Login
+- Book doctor appointments
+- Chat-based consultation
+- View & download prescriptions
 
-Consult doctors remotely via chat
+### 👨‍⚕️ Doctor
+- Secure login
+- View appointments
+- Chat with patients
+- Issue digital prescriptions
 
-Receive digital prescriptions
+### 🛠 Admin
+- Manage doctors and patients
+- Monitor platform activity
 
-Store medical consultation history securely
+---
 
-Doctors can:
+## 🛠 Tech Stack
 
-Manage appointments
+| Layer        | Technology |
+|--------------|------------|
+| Frontend     | React.js, Tailwind CSS |
+| Backend      | Node.js, Express.js |
+| Database     | MongoDB |
+| Auth         | JWT Authentication |
+| Deployment   | Vercel, Render, MongoDB Atlas |
 
-Consult patients remotely
+---
 
-Issue digital prescriptions
+## 🏗 System Architecture
 
-👥 User Roles
-
-Patient
-
-Doctor
-
-Admin
-
-✨ Features
-Patient
-
-User registration & login
-
-Book doctor appointments
-
-Chat-based consultation
-
-View and download prescriptions
-
-Doctor
-
-Secure login
-
-View assigned appointments
-
-Chat with patients
-
-Generate digital prescriptions
-
-Admin
-
-Manage doctors and patients
-
-Monitor platform activity
-
-🛠️ Tech Stack
-
-Frontend
-
-React.js
-
-Tailwind CSS
-
-Backend
-
-Node.js
-
-Express.js
-
-Database
-
-MongoDB
-
-Authentication
-
-JWT-based authentication
-
-Deployment
-
-Frontend: Vercel
-
-Backend: Render
-
-Database: MongoDB Atlas
-
-🏗️ System Architecture
 Client (Browser)
-     ↓
+↓
 React Frontend
-     ↓
+↓
 Node.js & Express API
-     ↓
+↓
 MongoDB Database
-🚀 Installation & Setup
-1️⃣ Clone the Repository
-git clone https://github.com/your-username/ruralcare.git
-cd ruralcare
+
+## 🚀 Installation & Setup
+
+### 1️⃣ Clone Repository
+```bash
+git clone https://github.com/your-username/Rural-Care.git
+cd Rural-Care
 2️⃣ Backend Setup
 cd backend
 npm install
@@ -128,10 +101,10 @@ MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 📈 Future Enhancements
 
-Video consultation support
+Video consultation
 
 Multi-language support
 
 AI-based symptom checker
 
-Integration with nearby pharmacies
+Pharmacy integration
