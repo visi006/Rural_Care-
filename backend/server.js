@@ -2,6 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
+const patientAuthRoutes = require("./routes/patientAuthRoutes");
+const doctorAuthRoutes = require("./routes/doctorAuthRoutes");
+
+app.use("/api/patient", patientAuthRoutes);
+app.use("/api/doctor", doctorAuthRoutes);
 
 const app = express();
 
