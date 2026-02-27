@@ -5,106 +5,109 @@
 ![Tech](https://img.shields.io/badge/Tech-MERN-green)
 ![License](https://img.shields.io/badge/License-MIT-orange)
 
----
 
-## 📌 Overview
-**RuralCare** is a web-based telemedicine platform designed to provide **accessible and affordable healthcare** services to people living in rural areas.  
-It enables patients to consult doctors remotely through **chat-based consultations** and receive **digital prescriptions**, reducing the need for long-distance travel.
+📌 Overview
 
----
+RuralCare is a full-stack telemedicine platform designed to improve healthcare accessibility in rural areas.
 
-## ❗ Problem Statement
-In many rural areas:
-- ❌ Limited access to qualified doctors  
-- ❌ Long-distance travel for basic consultations  
-- ❌ Delayed medical treatment  
+The current implementation focuses on building a secure authentication system, scalable backend architecture, and frontend integration, forming the foundation for future telemedicine modules.
 
----
+🏗 Project Structure
+RuralCare/
+│
+├── backend/
+│   ├── models/
+│   ├── controllers/
+│   ├── routes/
+│   ├── middleware/
+│   ├── server.js
+│   └── package.json
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── services/
+│   │   ├── App.js
+│   │   └── index.js
+│   ├── public/
+│   └── package.json
+│
+└── README.md
+✨ Implemented Features
+🔐 Authentication Module
 
-## 💡 Solution
-RuralCare addresses these challenges by providing:
-- ✔️ Remote doctor consultations  
-- ✔️ Online appointment booking  
-- ✔️ Digital prescription management  
-- ✔️ Secure medical history storage  
+Patient registration with bcrypt password hashing
 
----
+Secure login using JWT authentication
 
-## 👥 User Roles
-- **Patient**
-- **Doctor**
-- **Admin**
+Role-based token generation
 
----
+Protected dashboard rendering
 
-## ✨ Features
+MongoDB-based user data storage
 
-### 👤 Patient
-- Register & Login
-- Book doctor appointments
-- Chat-based consultation
-- View & download prescriptions
+🛠 Tech Stack
 
-### 👨‍⚕️ Doctor
-- Secure login
-- View appointments
-- Chat with patients
-- Issue digital prescriptions
+Frontend:
 
-### 🛠 Admin
-- Manage doctors and patients
-- Monitor platform activity
+React.js
 
----
+CSS
 
-## 🛠 Tech Stack
+Fetch API
 
-| Layer        | Technology |
-|--------------|------------|
-| Frontend     | React.js, Tailwind CSS |
-| Backend      | Node.js, Express.js |
-| Database     | MongoDB |
-| Auth         | JWT Authentication |
-| Deployment   | Vercel, Render, MongoDB Atlas |
+Backend:
 
----
+Node.js
 
-## 🏗 System Architecture
+Express.js
+
+MongoDB Atlas
+
+JWT Authentication
+
+bcrypt
+
+Tools:
+
+Git
+
+GitHub
+
+🏗 System Architecture
 
 Client (Browser)
 ↓
 React Frontend
 ↓
-Node.js & Express API
+Express REST API
 ↓
 MongoDB Database
 
-## 🚀 Installation & Setup
-
-### 1️⃣ Clone Repository
-```bash
-git clone https://github.com/your-username/Rural-Care.git
-cd Rural-Care
+🚀 Installation & Setup
+1️⃣ Clone Repository
+git clone https://github.com/your-username/RuralCare.git
+cd RuralCare
 2️⃣ Backend Setup
 cd backend
 npm install
-npm start
+npm run dev
 3️⃣ Frontend Setup
 cd frontend
 npm install
 npm start
 🔐 Environment Variables
 
-Create a .env file in the backend folder:
+Create a .env file inside backend/:
 
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 📈 Future Enhancements
 
-Video consultation
+Appointment booking system
 
-Multi-language support
+Chat-based consultation
 
-AI-based symptom checker
+Digital prescription module
 
-Pharmacy integration
+Admin dashboard
