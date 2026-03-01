@@ -2,18 +2,26 @@ const mongoose = require("mongoose");
 
 const appointmentSchema = new mongoose.Schema(
   {
-    patient: {
+    patientId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Patient",
+      required: true,
     },
-    doctor: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Doctor",
+    doctorName: {
+      type: String,
+      required: true,
     },
-    date: Date,
+    date: {
+      type: String,
+      required: true,
+    },
+    time: {
+      type: String,
+      required: true,
+    },
     status: {
       type: String,
-      default: "Scheduled",
+      default: "Booked",
     },
   },
   { timestamps: true }

@@ -1,16 +1,20 @@
-import { useState } from "react";
-import Login from "./components/login";
-import Register from "./components/register";
-import Dashboard from "./components/dashboard";
-import "./styles.css";
+import { Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Dashboard from "./components/Dashboard";
+import BookAppointment from "./components/BookAppointment";
+import ViewAppointments from "./components/ViewAppointments";
 
 function App() {
-  const token = localStorage.getItem("token");
-  const [page, setPage] = useState(token ? "dashboard" : "login");
-
-  if (page === "register") return <Register setPage={setPage} />;
-  if (page === "dashboard") return <Dashboard setPage={setPage} />;
-  return <Login setPage={setPage} />;
+  return (
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/book" element={<BookAppointment />} />
+      <Route path="/view" element={<ViewAppointments />} />
+    </Routes>
+  );
 }
 
 export default App;

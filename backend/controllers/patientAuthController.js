@@ -41,6 +41,7 @@ exports.loginPatient = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
+    console.log("JWT SECRET:", process.env.JWT_SECRET);
     const token = jwt.sign(
       { id: patient._id, role: "patient" },
       process.env.JWT_SECRET,

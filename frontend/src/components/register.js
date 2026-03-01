@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { registerPatient } from "../services/api";
+import "../styles.css";
 
-function Register({ setPage }) {
+function Register() {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -10,42 +14,62 @@ function Register({ setPage }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await registerPatient(form);
-    alert(data.message || "Registration completed");;
-    setPage("login");
+
+    try {
+      const data = await registerPatient(form);
+      alert(data.message || "Registration successful");
+      navigate("/");
+    } catch (error) {
+      alert("Something went wrong");
+    }
   };
 
   return (
-    <div className="card">
-      <h2>Patient Register</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Name"
-          onChange={(e) =>
-            setForm({ ...form, name: e.target.value })
-          }
-          required
-        />
-        <input
-          placeholder="Phone"
-          onChange={(e) =>
-            setForm({ ...form, phone: e.target.value })
-          }
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={(e) =>
-            setForm({ ...form, password: e.target.value })
-          }
-          required
-        />
-        <button type="submit">Register</button>
-      </form>
-      <button onClick={() => setPage("login")}>
-        Back to Login
-      </button>
+    <div className="container">
+      <div className="card">
+        <h2>Patient Registration</h2>
+
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={form.name}
+            onChange={(e) =>
+              setForm({ ...form, name: e.target.value })
+            }
+            required
+          />
+
+          <input
+            type="text"
+            placeholder="Phone Number"
+            value={form.phone}
+            onChange={(e) =>
+              setForm({ ...form, phone: e.target.value })
+            }
+            required
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={(e) =>
+              setForm({ ...form, password: e.target.value })
+            }
+            required
+          />
+
+          <button type="submit">Register</button>
+        </form>
+
+        <p className="switch-text">
+          Already have an account?{" "}
+          <span onClick={() => navigate("/")}>
+            Login here
+          </span>
+        </p>
+      </div>
     </div>
   );
 }
