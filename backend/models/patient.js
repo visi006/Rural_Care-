@@ -6,13 +6,16 @@ const patientSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
     age: Number,
     gender: String,
-    phone: {
+
+    email: {
       type: String,
       required: true,
       unique: true,
     },
+
     password: {
       type: String,
       required: true,
@@ -21,4 +24,4 @@ const patientSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("patient", patientSchema);
+module.exports = mongoose.model("Patient", patientSchema);

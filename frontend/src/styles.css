@@ -382,3 +382,27 @@ body {
   .dashboard-content { padding: 20px 16px; }
   .auth-card { padding: 28px 20px; }
 }
+
+.book-page {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.book-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px gray;
+  width: 400px;
+}
+
+.book-form input {
+  width: 100%;
+  margin: 8px 0;
+  padding: 8px;
+}
+
+.book-form button {
+  margin-top: 10px;
+}
