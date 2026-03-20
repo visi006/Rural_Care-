@@ -1,73 +1,140 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { registerPatient } from "../services/api";
-import "../styles.css";
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+
+const API = {
+  patient: 'http://localhost:5000/api/patient/register',
+  doctor:  'http://localhost:5000/api/doctor/register',
+};
 
 function Register() {
   const navigate = useNavigate();
 
-  const [form, setForm] = useState({
-    name: "",
-    phone: "",
-    password: "",
-  });
+  const [role, setRole]               = useState('patient');
+  const [name, setName]               = useState('');
+  const [email, setEmail]             = useState('');
+  const [password, setPassword]       = useState('');
+  const [specialisation, setSpec]     = useState('');
+  const [error, setError]             = useState('');
+  const [loading, setLoading]         = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
+    setError('');
+    setLoading(true);
+
+    // Build request body — doctors also send specialisation
+    const body = role === 'doctor'
+      ? { name, email, password, specialisation }
+      : { name, email, password };
 
     try {
-      const data = await registerPatient(form);
-      alert(data.message || "Registration successful");
-      navigate("/");
-    } catch (error) {
-      alert("Something went wrong");
+      const response = await fetch(API[role], {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.message || 'Registration failed');
+        setLoading(false);
+        return;
+      }
+
+      // Registration successful → go to login
+      alert('Account created! Please login.');
+      navigate('/login');
+
+    } catch (err) {
+      setError('Cannot connect to server. Is the backend running?');
+      setLoading(false);
     }
   };
 
   return (
-    <div className="container">
-      <div className="card">
-        <h2>Patient Registration</h2>
+    <div className="auth-page">
+      <div className="auth-card">
 
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Full Name"
-            value={form.name}
-            onChange={(e) =>
-              setForm({ ...form, name: e.target.value })
-            }
-            required
-          />
+        <div className="auth-header">
+          <div className="logo-circle">RC</div>
+          <h1>Create Account</h1>
+          <p>Join RuralCare today</p>
+        </div>
 
-          <input
-            type="text"
-            placeholder="Phone Number"
-            value={form.phone}
-            onChange={(e) =>
-              setForm({ ...form, phone: e.target.value })
-            }
-            required
-          />
+        {/* Role Toggle */}
+        <div className="role-toggle">
+          <button
+            className={role === 'patient' ? 'active' : ''}
+            onClick={() => setRole('patient')}
+          >
+            Patient
+          </button>
+          <button
+            className={role === 'doctor' ? 'active' : ''}
+            onClick={() => setRole('doctor')}
+          >
+            Doctor
+          </button>
+        </div>
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={(e) =>
-              setForm({ ...form, password: e.target.value })
-            }
-            required
-          />
+        <form onSubmit={handleRegister} className="auth-form">
+          <div className="form-group">
+            <label>Full Name</label>
+            <input
+              type="text"
+              placeholder="Enter your full name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
 
-          <button type="submit">Register</button>
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Min 6 characters"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          {/* Extra field only shown for doctors */}
+          {role === 'doctor' && (
+            <div className="form-group">
+              <label>Specialisation</label>
+              <input
+                type="text"
+                placeholder="e.g. General Physician, Cardiologist"
+                value={specialisation}
+                onChange={(e) => setSpec(e.target.value)}
+                required
+              />
+            </div>
+          )}
+
+          {error && <div className="error-msg">{error}</div>}
+
+          <button type="submit" className="btn-primary" disabled={loading}>
+            {loading ? 'Creating account...' : `Register as ${role}`}
+          </button>
         </form>
 
-        <p className="switch-text">
-          Already have an account?{" "}
-          <span onClick={() => navigate("/")}>
-            Login here
-          </span>
+        <p className="auth-switch">
+          Already have an account? <Link to="/login">Login here</Link>
         </p>
       </div>
     </div>
