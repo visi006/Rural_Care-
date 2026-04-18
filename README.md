@@ -3,7 +3,7 @@
   <h3>Web-Based Telemedicine Platform for Rural Healthcare</h3>
   
   <p>
-    <img src="https://img.shields.io/badge/Status-Under%20Development-blue?style=for-the-badge" alt="Status" />
+   
     <img src="https://img.shields.io/badge/Tech-MERN-green?style=for-the-badge" alt="Tech" />
     <img src="https://img.shields.io/badge/License-MIT-orange?style=for-the-badge" alt="License" />
   </p>
